@@ -121,7 +121,7 @@ CITIES = {
 BASE_DOMAIN = "rusvodokanal.ru"
 
 # Папки и файлы для копирования (относительно корня проекта)
-COPY_DIRS = ["css", "js", "img"]
+COPY_DIRS = ["css", "js", "img", "api"]
 COPY_FILES = ["404.html", "politika.html"]  # Файлы без замен
 
 # HTML файлы для обработки (с заменами)
@@ -376,6 +376,7 @@ def replace_city_data(content, city_code, filename):
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/{metrika_id}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<script src="/js/telegram-form.js"></script>
 '''
     content = re.sub(
         r'(</body>)',
