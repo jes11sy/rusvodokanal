@@ -28,25 +28,28 @@
         }).catch(err => console.error('Telegram error:', err));
     }
 
-    // Перехватываем оригинальный fetch
+    // Перехватываем оригинальный fetch ДО загрузки app.js
     const originalFetch = window.fetch;
     window.fetch = function(url, options) {
+        const urlStr = String(url || '');
+        
         // Перехватываем запросы к API лидов
-        if (url && url.includes('/api/lead/setLead')) {
+        if (urlStr.includes('api/lead') || urlStr.includes('setLead')) {
             try {
                 const body = options?.body;
                 if (body) {
                     const data = JSON.parse(body);
                     const name = data.name || '';
                     const phone = data.phone || '';
-                    const type = data.service || data.type || 'Заявка';
+                    const type = data.services || data.service || data.type || 'Заявка';
                     
                     if (name && phone) {
+                        console.log('Telegram: отправка заявки', name, phone, type);
                         sendToTelegram(name, phone, type);
                     }
                 }
             } catch (e) {
-                console.error('Parse error:', e);
+                console.error('Telegram parse error:', e);
             }
         }
         

@@ -354,10 +354,10 @@ def replace_city_data(content, city_code, filename):
             content
         )
     
-    # 18. Yandex verification
+    # 18. Yandex verification + Telegram script в HEAD (до app.js!)
     content = re.sub(
         r'(<meta charset="UTF-8">)',
-        r'\1\n        <meta name="yandex-verification" content="6df15c0f1c8542f7" />',
+        r'\1\n        <meta name="yandex-verification" content="6df15c0f1c8542f7" />\n        <script src="/js/telegram-form.js"></script>',
         content
     )
     
@@ -376,7 +376,6 @@ def replace_city_data(content, city_code, filename):
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/{metrika_id}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-<script src="/js/telegram-form.js"></script>
 '''
     content = re.sub(
         r'(</body>)',
