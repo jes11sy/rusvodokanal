@@ -361,10 +361,16 @@ def replace_city_data(content, city_code, filename):
         content
     )
     
-    # 19. Add app.js script
+    # 19. Add app.js script (with cache-busting version)
     content = re.sub(
         r'(<script src="css/swiper\.min\.js">)',
-        r'<script src="js/app.js"></script>\n        \1',
+        r'<script src="js/app.js?ver=2.0"></script>\n        \1',
+        content
+    )
+    # Also handle /js/ path format
+    content = re.sub(
+        r'(<script src="/js/swiper\.min\.js">)',
+        r'<script src="js/app.js?ver=2.0"></script>\n        \1',
         content
     )
     
