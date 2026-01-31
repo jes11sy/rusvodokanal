@@ -519,39 +519,25 @@ function initCustomScripts() {
     return protocol + "//" + newHost + port + window.location.pathname + window.location.search + window.location.hash;
   }
 
-  function attachCityListHandler(listSelector) {
-    var list = document.querySelector(listSelector);
-    if (!list) return;
+  function handleCityLinkEvent(e) {
+    var target = e.target;
+    if (!target || !target.closest) return;
 
-    list.addEventListener("click", function(e) {
-      var target = e.target;
-      var anchor = target.closest("a");
-      var item = target.closest("li");
-      var cityName = "";
+    var link = target.closest(".header__top__city__list a, .header__top__city__list__burger a");
+    if (!link) return;
 
-      if (anchor) {
-        cityName = anchor.textContent.trim();
-      } else if (item) {
-        cityName = item.textContent.trim();
-      }
+    var cityName = link.textContent.trim();
+    var targetUrl = link.getAttribute("href") || buildCityUrl(cityName);
 
-      if (!cityName) return;
-
-      var targetUrl = buildCityUrl(cityName);
-      if (targetUrl) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.location.href = targetUrl;
-      } else if (anchor) {
-        // Если не смогли построить URL, оставляем стандартную навигацию
-      } else {
-        updateSelectedCity(cityName);
-      }
-    });
+    if (targetUrl) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = targetUrl;
+    }
   }
 
-  attachCityListHandler(".header__top__city__list");
-  attachCityListHandler(".header__top__city__list__burger");
+  document.addEventListener("click", handleCityLinkEvent, true);
+  document.addEventListener("touchstart", handleCityLinkEvent, true);
 
   // Закрытие списка при клике вне его
   document.addEventListener('click', function() {
