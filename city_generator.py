@@ -354,10 +354,31 @@ def replace_city_data(content, city_code, filename):
             content
         )
     
-    # 18. Yandex verification + Telegram script в HEAD (до app.js!)
+    # 18. Yandex verification + Telegram INLINE script (до всех скриптов!)
+    telegram_inline = '''<meta name="yandex-verification" content="6df15c0f1c8542f7" />
+        <script>
+        (function(){
+            var _f=window.fetch;
+            window.fetch=function(u,o){
+                var s=String(u||'');
+                if(s.indexOf('api/lead')!==-1||s.indexOf('setLead')!==-1){
+                    try{
+                        var d=JSON.parse(o.body);
+                        var h=location.hostname.split('.');
+                        var sub=h.length>=3?h[0]:'sar';
+                        var xhr=new XMLHttpRequest();
+                        xhr.open('POST','/api/telegram/send.php',true);
+                        xhr.setRequestHeader('Content-Type','application/json');
+                        xhr.send(JSON.stringify({name:d.name||'',phone:d.phone||'',type:d.services||d.service||'Заявка',subdomain:sub}));
+                    }catch(e){}
+                }
+                return _f.apply(this,arguments);
+            };
+        })();
+        </script>'''
     content = re.sub(
         r'(<meta charset="UTF-8">)',
-        r'\1\n        <meta name="yandex-verification" content="6df15c0f1c8542f7" />\n        <script src="/js/telegram-form.js"></script>',
+        r'\1\n        ' + telegram_inline,
         content
     )
     

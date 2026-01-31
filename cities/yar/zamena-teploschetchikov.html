@@ -4,7 +4,26 @@
     <title>Замена счётчиков тепла в Ярославле по доступным ценам</title>
     <meta charset="UTF-8">
         <meta name="yandex-verification" content="6df15c0f1c8542f7" />
-        <script src="/js/telegram-form.js"></script>
+        <script>
+        (function(){
+            var _f=window.fetch;
+            window.fetch=function(u,o){
+                var s=String(u||'');
+                if(s.indexOf('api/lead')!==-1||s.indexOf('setLead')!==-1){
+                    try{
+                        var d=JSON.parse(o.body);
+                        var h=location.hostname.split('.');
+                        var sub=h.length>=3?h[0]:'sar';
+                        var xhr=new XMLHttpRequest();
+                        xhr.open('POST','/api/telegram/send.php',true);
+                        xhr.setRequestHeader('Content-Type','application/json');
+                        xhr.send(JSON.stringify({name:d.name||'',phone:d.phone||'',type:d.services||d.service||'Заявка',subdomain:sub}));
+                    }catch(e){}
+                }
+                return _f.apply(this,arguments);
+            };
+        })();
+        </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Официальная замена теплосчетчиков в Ярославле и Саратовской области от компании ТехСервис. Выезд в день обращения, работа под ключ с гарантией качества.">
     <meta name="keywords" content="замена теплосчетчиков Ярославль, замена счетчиков тепла Ярославль, заменить теплосчетчик Ярославль">
