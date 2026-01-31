@@ -1,4 +1,43 @@
 "use strict";
+
+// Функция для построения URL с поддоменом города
+function buildCityUrlForRedirect(cityName, fallbackHref) {
+    const subdomainMap = {
+        "Саратов": "sar",
+        "Энгельс": "eng",
+        "Омск": "oms",
+        "Пенза": "pnz",
+        "Тольятти": "tol",
+        "Ульяновск": "uly",
+        "Ярославль": "yar"
+    };
+    
+    const subdomain = subdomainMap[cityName];
+    if (!subdomain) return fallbackHref;
+    
+    const host = window.location.hostname;
+    const protocol = window.location.protocol;
+    const port = window.location.port ? ":" + window.location.port : "";
+    
+    // Находим базовый домен
+    const parts = host.split(".");
+    let baseHost;
+    
+    if (parts.length >= 3) {
+        // Уже есть поддомен — убираем его
+        baseHost = parts.slice(1).join(".");
+    } else if (parts.length === 2) {
+        // Просто rusvodokanal.ru
+        baseHost = host;
+    } else {
+        // localhost — используем fallback href
+        return fallbackHref;
+    }
+    
+    const newHost = subdomain + "." + baseHost;
+    return protocol + "//" + newHost + port + window.location.pathname + window.location.search + window.location.hash;
+}
+
 if (document.querySelector(".navlink")) {
     let navLinkArr = Array.from(document.querySelectorAll(".navlink"));
     let url = window.location.href;
@@ -801,8 +840,23 @@ if (document.querySelector(".header")) {
             event.stopPropagation();
         };
         const handleCityClick = (event) => {
+            event.preventDefault();
             const target = event.currentTarget;
-            const selectedCity = target.innerText;
+            const selectedCity = target.innerText.trim();
+            
+            // Находим ссылку внутри элемента
+            const link = target.querySelector("a");
+            const href = link ? link.getAttribute("href") : null;
+            
+            // Строим URL с сохранением текущей страницы
+            const cityUrl = buildCityUrlForRedirect(selectedCity, href);
+            
+            if (cityUrl) {
+                window.location.href = cityUrl;
+                return;
+            }
+            
+            // Fallback: просто меняем текст если редирект не удался
             const span = openSelected.querySelector("span");
             if (span) {
                 span.innerText = selectedCity;
@@ -857,8 +911,23 @@ if (document.querySelector(".header")) {
             event.stopPropagation();
         };
         const handleCityBurgerClick = (event) => {
+            event.preventDefault();
             const target = event.currentTarget;
-            const selectedCity = target.innerText;
+            const selectedCity = target.innerText.trim();
+            
+            // Находим ссылку внутри элемента
+            const link = target.querySelector("a");
+            const href = link ? link.getAttribute("href") : null;
+            
+            // Строим URL с сохранением текущей страницы
+            const cityUrl = buildCityUrlForRedirect(selectedCity, href);
+            
+            if (cityUrl) {
+                window.location.href = cityUrl;
+                return;
+            }
+            
+            // Fallback: просто меняем текст если редирект не удался
             const span = openBurgerSelected.querySelector("span");
             if (span) {
                 span.innerText = selectedCity;
