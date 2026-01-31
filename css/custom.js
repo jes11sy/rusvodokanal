@@ -94,6 +94,7 @@ function initCustomScripts() {
     updateCityText(cityName);
     updateAddressText(cityName);
     updateServicePrices(cityName);
+    updateMainCity(cityName);
   }
 
   var cityTextOriginals = new WeakMap();
@@ -394,6 +395,13 @@ function initCustomScripts() {
     });
   }
 
+  function updateMainCity(cityName) {
+    var main = document.querySelector("main");
+    if (main) {
+      main.setAttribute("data-city", cityName);
+    }
+  }
+
   function getCityPrices(cityName) {
     var prices = {
       "Саратов": { verify: "500 ₽", replace: "от 1800 ₽", install: "от 2100 ₽" },
@@ -442,13 +450,66 @@ function initCustomScripts() {
     });
   }
 
+  function getCityFromSubdomain() {
+    var host = (window.location.hostname || "").toLowerCase();
+    if (!host || host === "localhost" || host === "127.0.0.1") {
+      return null;
+    }
+    var parts = host.split(".");
+    if (parts.length < 3) {
+      return null;
+    }
+    var subdomain = parts[0];
+    var map = {
+      sar: "Саратов",
+      eng: "Энгельс",
+      oms: "Омск",
+      pnz: "Пенза",
+      tol: "Тольятти",
+      uly: "Ульяновск",
+      yar: "Ярославль"
+    };
+    return map[subdomain] || null;
+  }
+
+  var subdomainCity = getCityFromSubdomain();
   var storedCity = localStorage.getItem('selectedCity');
-  if (storedCity) {
+  if (subdomainCity) {
+    updateSelectedCity(subdomainCity);
+  } else if (storedCity) {
     updateSelectedCity(storedCity);
   } else {
-    updateCityText("Саратов");
-    updateAddressText("Саратов");
-    updateServicePrices("Саратов");
+    updateSelectedCity("Саратов");
+  }
+
+  function getSubdomainByCity(cityName) {
+    var map = {
+      "Саратов": "sar",
+      "Энгельс": "eng",
+      "Омск": "oms",
+      "Пенза": "pnz",
+      "Тольятти": "tol",
+      "Ульяновск": "uly",
+      "Ярославль": "yar"
+    };
+    return map[cityName] || null;
+  }
+
+  function buildCityUrl(cityName) {
+    var host = window.location.hostname;
+    var protocol = window.location.protocol;
+    var port = window.location.port ? ":" + window.location.port : "";
+    var subdomain = getSubdomainByCity(cityName);
+
+    if (!subdomain || !host) return null;
+
+    var baseHost = host;
+    if (host.split(".").length >= 3) {
+      baseHost = host.split(".").slice(1).join(".");
+    }
+
+    var newHost = subdomain + "." + baseHost;
+    return protocol + "//" + newHost + port + window.location.pathname + window.location.search + window.location.hash;
   }
 
   var cityLinks = document.querySelectorAll('.header__top__city__list a, .header__top__city__list__burger a');
@@ -457,7 +518,12 @@ function initCustomScripts() {
       e.preventDefault();
       e.stopPropagation();
       var cityName = this.textContent.trim();
-      updateSelectedCity(cityName);
+      var targetUrl = buildCityUrl(cityName);
+      if (targetUrl) {
+        window.location.href = targetUrl;
+      } else {
+        updateSelectedCity(cityName);
+      }
     });
   });
 
