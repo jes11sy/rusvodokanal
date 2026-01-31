@@ -2,65 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rusvodokanal.ru/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/akkreditovannye-kompanii-po-ustanovke-schetchikov-vody.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/blagodarnosti.html</loc>
-  </url>
-  <url>
-    <loc>https://rusvodokanal.ru/index.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/kontakty.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/otzyvy.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/politika.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/pravila-poverki-schetchikov-vody-v-moskve.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/pravilnaya-ustanovka-schetchika.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/pressa.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/poryadok-zameny-schetchika-vody.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/sertifikaty.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/tehnicheskoe-obsluzhivanie.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/uslugi-dlya-biznesa.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/ustanovka-schetchikov-vody.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/ustanovka-teploschetchikov.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/ustanovka-umnyh-schetchikov-vody.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/vyzov-santehnika.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/zamena-schetchikov-vody.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://rusvodokanal.ru/zamena-teploschetchikov.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

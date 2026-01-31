@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://rusvodokanal.ru/sitemap.xml
+
+# Disallow admin and system directories
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /admin/
+
+# Allow CSS and JS for better rendering
+Allow: /css/
+Allow: /js/
+Allow: /img/
