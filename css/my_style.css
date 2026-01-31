@@ -1139,6 +1139,16 @@ legend {
     transform: translateY(-50%) rotate(180deg)
 }
 
+.application-form-select.open {
+    overflow: visible !important;
+    border: none
+}
+
+.application-form-select.open .application-form-select__list {
+    display: block;
+    border: 1px solid #595959
+}
+
 .application-form-select__list {
     display: block;
     padding: 16px;

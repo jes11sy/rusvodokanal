@@ -648,6 +648,63 @@ function initCustomScripts() {
     });
   });
 
+  // Выпадающий список в форме application-form-select
+  var appFormSelects = document.querySelectorAll('.application-form-select');
+  
+  appFormSelects.forEach(function(select) {
+    var list = select.querySelector('.application-form-select__list');
+    
+    // Открытие/закрытие списка при клике на контейнер
+    select.addEventListener('click', function(e) {
+      e.stopPropagation();
+      
+      var currentFirstItem = list.querySelector('.application-form-select__item:first-child');
+      
+      // Если список закрыт - открываем при любом клике
+      if (!this.classList.contains('open')) {
+        this.classList.add('open');
+        return;
+      }
+      
+      // Если список открыт и клик по первому элементу или вне элементов списка - закрываем
+      if (e.target === currentFirstItem || !e.target.classList.contains('application-form-select__item')) {
+        this.classList.remove('open');
+      }
+    });
+
+    // Обработка клика по элементам списка
+    select.addEventListener('click', function(e) {
+      if (!e.target.classList.contains('application-form-select__item')) return;
+      
+      var currentFirstItem = list.querySelector('.application-form-select__item:first-child');
+      
+      // Если клик по первому элементу - не делаем ничего (уже обрабатывается выше)
+      if (e.target === currentFirstItem) return;
+      
+      // Убираем класс checked у всех элементов
+      var items = list.querySelectorAll('.application-form-select__item');
+      items.forEach(function(i) {
+        i.classList.remove('application-form-select__checked');
+      });
+      
+      // Добавляем класс checked к выбранному элементу
+      e.target.classList.add('application-form-select__checked');
+      
+      // Перемещаем выбранный элемент в начало списка
+      list.insertBefore(e.target, list.firstChild);
+      
+      // Закрываем список
+      select.classList.remove('open');
+    });
+  });
+
+  // Закрытие выпадающего списка application-form при клике вне его
+  document.addEventListener('click', function() {
+    appFormSelects.forEach(function(select) {
+      select.classList.remove('open');
+    });
+  });
+
   function normalizeMasterTitleSpacing() {
     var titleSelectors = ".about-form__title, .application-form__title, .modal-form__title, .header-form__title";
     var titles = document.querySelectorAll(titleSelectors);
