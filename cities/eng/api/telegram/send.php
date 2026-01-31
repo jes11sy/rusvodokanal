@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -10,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Telegram Bot настройки
-$botToken = '8391094388:AAGyYn4RWPMilwdfkrq3j1raso5CNcJ97H8'; // Замени на токен бота
-$chatId = '-4840450399';     // Замени на ID чата
+$botToken = '8391094388:AAGyYn4RWPMilwdfkrq3j1raso5CNcJ97H8';
+$chatId = '-4840450399';
 
 // Названия городов по поддоменам
 $cities = [
@@ -25,18 +24,37 @@ $cities = [
     'rusvodokanal' => 'Основной'
 ];
 
-// Получаем данные
+// Получаем данные из JSON или POST
 $input = json_decode(file_get_contents('php://input'), true);
 
-if (!$input) {
-    echo json_encode(['success' => false, 'error' => 'No data']);
-    exit();
+if ($input) {
+    // JSON запрос
+    $name = $input['name'] ?? '';
+    $phone = $input['phone'] ?? '';
+    $type = $input['type'] ?? $input['services'] ?? 'Заявка';
+    $subdomain = $input['subdomain'] ?? '';
+} else {
+    // Form POST запрос
+    $name = $_POST['name'] ?? $_POST['header-name'] ?? '';
+    $phone = $_POST['phone'] ?? $_POST['header-phone'] ?? '';
+    $type = $_POST['service'] ?? $_POST['services'] ?? 'Заявка';
+    $subdomain = '';
 }
 
-$name = htmlspecialchars($input['name'] ?? 'Не указано');
-$phone = htmlspecialchars($input['phone'] ?? 'Не указан');
-$type = htmlspecialchars($input['type'] ?? 'Заявка');
-$subdomain = htmlspecialchars($input['subdomain'] ?? 'rusvodokanal');
+// Определяем город по хосту если не передан
+if (empty($subdomain)) {
+    $host = $_SERVER['HTTP_HOST'] ?? '';
+    $parts = explode('.', $host);
+    if (count($parts) >= 3) {
+        $subdomain = $parts[0];
+    } else {
+        $subdomain = 'sar';
+    }
+}
+
+$name = htmlspecialchars($name ?: 'Не указано');
+$phone = htmlspecialchars($phone ?: 'Не указан');
+$type = htmlspecialchars($type);
 
 // Определяем город
 $cityName = $cities[$subdomain] ?? 'Неизвестный';
@@ -71,8 +89,27 @@ $options = [
 $context = stream_context_create($options);
 $result = @file_get_contents($url, false, $context);
 
+// Определяем тип запроса
+$isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+          strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+$isJson = strpos($_SERVER['CONTENT_TYPE'] ?? '', 'application/json') !== false;
+
 if ($result) {
-    echo json_encode(['success' => true]);
+    if ($isAjax || $isJson || $input) {
+        // AJAX/JSON запрос - возвращаем JSON
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['success' => true]);
+    } else {
+        // Обычная форма - редирект на страницу благодарности или назад
+        $referer = $_SERVER['HTTP_REFERER'] ?? '/';
+        header('Location: ' . $referer . '?success=1');
+    }
 } else {
-    echo json_encode(['success' => false, 'error' => 'Telegram API error']);
+    if ($isAjax || $isJson || $input) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['success' => false, 'error' => 'Telegram API error']);
+    } else {
+        $referer = $_SERVER['HTTP_REFERER'] ?? '/';
+        header('Location: ' . $referer . '?error=1');
+    }
 }
