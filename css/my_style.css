@@ -9815,7 +9815,15 @@ legend {
         width: 100vw;
         height: 100vh;
         padding: 16px;
-        border-radius: 0
+        border-radius: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch
+    }
+
+    .header .header__burger__menu.header__burger__menu__active > button {
+        flex-shrink: 0;
+        width: 100%;
+        margin-bottom: 16px
     }
 
     .header__top {
