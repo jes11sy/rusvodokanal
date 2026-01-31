@@ -485,7 +485,7 @@ def generate_city_site(city_code, source_dir, output_dir):
     city = CITIES[city_code]
     city_output_dir = output_dir / city_code
     
-    print(f"\n📍 Генерация сайта для города: {city['name']} ({city_code})")
+    print(f"\nGenerating: {city['name']} ({city_code})")
     
     # Создаём папку города
     city_output_dir.mkdir(parents=True, exist_ok=True)
@@ -538,7 +538,7 @@ def generate_city_site(city_code, source_dir, output_dir):
         f.write(sitemap_content)
     print(f"   ✓ Создан: sitemap.xml")
     
-    print(f"   ✅ Готово: {city['name']}")
+    print(f"   Done: {city['name']}")
 
 
 def generate_nginx_config(output_dir):
@@ -615,15 +615,15 @@ def main():
     Главная функция генератора.
     """
     print("=" * 60)
-    print("🏙️  SSG Генератор мультигородского сайта")
+    print("SSG Generator")
     print("=" * 60)
     
     project_root = get_project_root()
     output_dir = project_root / "cities"
     
-    print(f"\n📂 Исходная папка: {project_root}")
-    print(f"📂 Папка вывода: {output_dir}")
-    print(f"🏙️  Городов для генерации: {len(CITIES)}")
+    print(f"\nSource: {project_root}")
+    print(f"Output: {output_dir}")
+    print(f"Cities: {len(CITIES)}")
     
     # Очищаем папку вывода
     if output_dir.exists():
@@ -638,14 +638,9 @@ def main():
     generate_nginx_config(output_dir)
     
     print("\n" + "=" * 60)
-    print("✅ ГЕНЕРАЦИЯ ЗАВЕРШЕНА!")
+    print("DONE!")
     print("=" * 60)
-    print(f"\nСозданы сайты для {len(CITIES)} городов в папке: {output_dir}")
-    print("\nСледующие шаги:")
-    print("1. Загрузи папки городов на сервер")
-    print("2. Настрой nginx по файлу nginx_cities.conf")
-    print("3. Добавь каждый поддомен в Яндекс.Вебмастер")
-    print("4. Подтверди права и загрузи sitemap для каждого")
+    print(f"\nGenerated {len(CITIES)} cities to: {output_dir}")
 
 
 if __name__ == "__main__":

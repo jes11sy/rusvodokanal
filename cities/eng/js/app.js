@@ -1,5 +1,23 @@
 "use strict";
 
+// === TELEGRAM NOTIFICATION ===
+function sendToTelegram(name, phone, type) {
+    if (!name || !phone || phone.length < 6) return;
+    var host = window.location.hostname;
+    var parts = host.split('.');
+    var subdomain = parts.length >= 3 ? parts[0] : 'sar';
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/telegram/send.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        name: name,
+        phone: phone,
+        type: type || 'Заявка',
+        subdomain: subdomain
+    }));
+}
+// === END TELEGRAM ===
+
 // Функция для построения URL с поддоменом города
 function buildCityUrlForRedirect(cityName, fallbackHref) {
     const subdomainMap = {
@@ -132,6 +150,9 @@ if (document.querySelector(".about-form")) {
                 //recaptchaResponse: formData.get("recaptchaResponse"),
                 date: new Date()
             };
+            
+            // Отправка в Telegram
+            sendToTelegram(jsonData.name, jsonData.phone, jsonData.services);
             
             fetch(`https://${window.location.host}/api/lead/setLead/index.php`, {
                 method: "POST",
@@ -316,6 +337,10 @@ if (document.querySelector(".application-form")) {
                 services: getCheckedValue(),
                 date: new Date()
             };
+            
+            // Отправка в Telegram
+            sendToTelegram(jsonData.name, jsonData.phone, jsonData.services);
+            
             fetch(`https://${window.location.host}/api/lead/setLead/index.php`, {
                 method: "POST",
                 headers: {
@@ -1173,9 +1198,13 @@ if (document.querySelector(".header-form")) {
             const jsonData = {
                 name: formData.get("header-name"),
                 phone: formData.get("header-phone"),
-                services: "Перезвонить клиенту ",
+                services: "Перезвонить клиенту",
                 date: new Date()
             };
+            
+            // Отправка в Telegram
+            sendToTelegram(jsonData.name, jsonData.phone, jsonData.services);
+            
             fetch(`https://${document.location.host}/api/lead/setLead/index.php`, {
                 method: "POST",
                 headers: {
@@ -1604,6 +1633,10 @@ if (document.querySelector(".modal-form")) {
                 services: getCheckedValue(),
                 date: new Date()
             };
+            
+            // Отправка в Telegram
+            sendToTelegram(jsonData.name, jsonData.phone, jsonData.services);
+            
             fetch(`https://${document.location.host}/api/lead/setLead/index.php`, {
                 method: "POST",
                 headers: {
