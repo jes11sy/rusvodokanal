@@ -158,17 +158,39 @@
     }
 
     const phone = selectPhone();
-    // 5. Если главная и UTM нет → очищаем
-    if (!utm.source && window.location.pathname === "/") {
+    // 5. Если главная и UTM нет → очищаем (только для msk и spb)
+    if (!utm.source && window.location.pathname === "/" && (region === "msk" || region === "spb")) {
         sessionStorage.removeItem("tel");
         sessionStorage.removeItem("phone");
         return;
     }
 
-    // 6. Сохраняем номер
+    // 6. Сохраняем номер и применяем к странице
     if (phone) {
         sessionStorage.setItem("tel", phone[0]);
         sessionStorage.setItem("phone", phone[1]);
+        
+        // Применяем телефон к элементам на странице
+        function applyPhone() {
+            var phoneSpans = document.querySelectorAll(".phone-number");
+            phoneSpans.forEach(function(span) {
+                span.textContent = phone[1];
+            });
+            
+            var telLinks = document.querySelectorAll('a[href^="tel:"]');
+            telLinks.forEach(function(link) {
+                link.setAttribute("href", "tel:" + phone[0]);
+                if (!link.querySelector(".phone-number")) {
+                    link.textContent = phone[1];
+                }
+            });
+        }
+        
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", applyPhone);
+        } else {
+            applyPhone();
+        }
     }
 
 })();
