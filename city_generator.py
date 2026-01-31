@@ -121,7 +121,7 @@ CITIES = {
 BASE_DOMAIN = "rusvodokanal.ru"
 
 # Папки и файлы для копирования (относительно корня проекта)
-COPY_DIRS = ["css", "js", "img", "api"]
+COPY_DIRS = ["css", "js", "img"]
 COPY_FILES = ["404.html", "politika.html"]  # Файлы без замен
 
 # HTML файлы для обработки (с заменами)
@@ -354,31 +354,10 @@ def replace_city_data(content, city_code, filename):
             content
         )
     
-    # 18. Yandex verification + Telegram INLINE script (до всех скриптов!)
-    telegram_inline = '''<meta name="yandex-verification" content="6df15c0f1c8542f7" />
-        <script>
-        (function(){
-            var _f=window.fetch;
-            window.fetch=function(u,o){
-                var s=String(u||'');
-                if(s.indexOf('api/lead')!==-1||s.indexOf('setLead')!==-1){
-                    try{
-                        var d=JSON.parse(o.body);
-                        var h=location.hostname.split('.');
-                        var sub=h.length>=3?h[0]:'sar';
-                        var xhr=new XMLHttpRequest();
-                        xhr.open('POST','/api/telegram/send.php',true);
-                        xhr.setRequestHeader('Content-Type','application/json');
-                        xhr.send(JSON.stringify({name:d.name||'',phone:d.phone||'',type:d.services||d.service||'Заявка',subdomain:sub}));
-                    }catch(e){}
-                }
-                return _f.apply(this,arguments);
-            };
-        })();
-        </script>'''
+    # 18. Yandex verification meta tag
     content = re.sub(
         r'(<meta charset="UTF-8">)',
-        r'\1\n        ' + telegram_inline,
+        r'\1\n        <meta name="yandex-verification" content="6df15c0f1c8542f7" />',
         content
     )
     

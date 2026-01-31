@@ -1,19 +1,44 @@
 "use strict";
 
 // === TELEGRAM NOTIFICATION ===
+var TG_BOT_TOKEN = '8391094388:AAGyYn4RWPMilwdfkrq3j1raso5CNcJ97H8';
+var TG_CHAT_ID = '-4840450399';
+var CITY_NAMES = {
+    'sar': 'Саратов',
+    'eng': 'Энгельс', 
+    'oms': 'Омск',
+    'pnz': 'Пенза',
+    'tol': 'Тольятти',
+    'uly': 'Ульяновск',
+    'yar': 'Ярославль'
+};
+
 function sendToTelegram(name, phone, type) {
     if (!name || !phone || phone.length < 6) return;
+    
     var host = window.location.hostname;
     var parts = host.split('.');
     var subdomain = parts.length >= 3 ? parts[0] : 'sar';
+    var cityName = CITY_NAMES[subdomain] || 'Саратов';
+    
+    var now = new Date();
+    var dateStr = now.toLocaleDateString('ru-RU') + ', ' + now.toLocaleTimeString('ru-RU');
+    
+    var text = '🔔 Новая заявка с РусВодоканал (' + cityName + ')\n\n' +
+               '👤 Имя: ' + name + '\n' +
+               '📞 Телефон: ' + phone + '\n' +
+               '📋 Тип заявки: ' + (type || 'Заявка') + '\n' +
+               '⏰ Время: ' + dateStr;
+    
+    var url = 'https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage';
+    
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/api/telegram/send.php', true);
+    xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
-        name: name,
-        phone: phone,
-        type: type || 'Заявка',
-        subdomain: subdomain
+        chat_id: TG_CHAT_ID,
+        text: text,
+        parse_mode: 'HTML'
     }));
 }
 // === END TELEGRAM ===

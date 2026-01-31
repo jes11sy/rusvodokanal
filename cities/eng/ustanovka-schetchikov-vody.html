@@ -4,26 +4,6 @@
         <title>Установка счетчиков воды в Энгельсе. Аккредитованная компания</title>
         <meta charset="UTF-8">
         <meta name="yandex-verification" content="6df15c0f1c8542f7" />
-        <script>
-        (function(){
-            var _f=window.fetch;
-            window.fetch=function(u,o){
-                var s=String(u||'');
-                if(s.indexOf('api/lead')!==-1||s.indexOf('setLead')!==-1){
-                    try{
-                        var d=JSON.parse(o.body);
-                        var h=location.hostname.split('.');
-                        var sub=h.length>=3?h[0]:'sar';
-                        var xhr=new XMLHttpRequest();
-                        xhr.open('POST','/api/telegram/send.php',true);
-                        xhr.setRequestHeader('Content-Type','application/json');
-                        xhr.send(JSON.stringify({name:d.name||'',phone:d.phone||'',type:d.services||d.service||'Заявка',subdomain:sub}));
-                    }catch(e){}
-                }
-                return _f.apply(this,arguments);
-            };
-        })();
-        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Установка счетчиков воды в Энгельсе и Саратовской области от лицензированной компании ТехСервис. Выгодные цены на монтаж водосчетчиков при холодном и горячем водоснабжении.">
         <meta name="keywords" content="установка счетчиков воды Энгельс, установка водосчетчиков Энгельс, монтаж счетчиков воды Энгельс">

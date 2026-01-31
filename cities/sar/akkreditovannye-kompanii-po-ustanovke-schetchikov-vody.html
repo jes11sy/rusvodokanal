@@ -5,26 +5,6 @@
     <base href="https://rusvodokanal.ru/" />
     <meta charset="UTF-8">
         <meta name="yandex-verification" content="6df15c0f1c8542f7" />
-        <script>
-        (function(){
-            var _f=window.fetch;
-            window.fetch=function(u,o){
-                var s=String(u||'');
-                if(s.indexOf('api/lead')!==-1||s.indexOf('setLead')!==-1){
-                    try{
-                        var d=JSON.parse(o.body);
-                        var h=location.hostname.split('.');
-                        var sub=h.length>=3?h[0]:'sar';
-                        var xhr=new XMLHttpRequest();
-                        xhr.open('POST','/api/telegram/send.php',true);
-                        xhr.setRequestHeader('Content-Type','application/json');
-                        xhr.send(JSON.stringify({name:d.name||'',phone:d.phone||'',type:d.services||d.service||'Заявка',subdomain:sub}));
-                    }catch(e){}
-                }
-                return _f.apply(this,arguments);
-            };
-        })();
-        </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="«Городской центр учёта и экономии ресурсов» получил аттестат аккредитации в 2014 году и работает со счётчиками воды официально. Регулярно подтверждаем лицензию.">
     <meta name="keywords" content="аккредитованные компании установка счетчиков Саратов, лицензированная установка счетчиков Саратов">
