@@ -140,6 +140,29 @@ HTML_FILES = [
     "pravilnaya-ustanovka-schetchika.html",
 ]
 
+# Keywords для каждой страницы (шаблон с {city} для подстановки города)
+PAGE_KEYWORDS = {
+    "index.html": "поверка счетчиков воды {city}, замена счетчиков воды {city}, установка счетчиков воды {city}, поверка водосчетчиков {city}",
+    "about.html": "ТехСервис {city}, служба поверки счетчиков {city}, метрологическая служба {city}",
+    "kontakty.html": "контакты ТехСервис {city}, адрес поверка счетчиков {city}, телефон поверка счетчиков {city}",
+    "otzyvy.html": "отзывы поверка счетчиков {city}, отзывы ТехСервис {city}, отзывы замена счетчиков {city}",
+    "sertifikaty.html": "сертификаты поверка счетчиков {city}, аккредитация поверка {city}, лицензия поверка счетчиков {city}",
+    "blagodarnosti.html": "благодарности ТехСервис {city}, награды поверка счетчиков {city}",
+    "pressa.html": "статьи поверка счетчиков {city}, новости ТехСервис {city}",
+    "zamena-schetchikov-vody.html": "замена счетчиков воды {city}, замена водосчетчиков {city}, заменить счетчик воды {city}, замена водомера {city}",
+    "zamena-teploschetchikov.html": "замена теплосчетчиков {city}, замена счетчиков тепла {city}, заменить теплосчетчик {city}",
+    "ustanovka-schetchikov-vody.html": "установка счетчиков воды {city}, установка водосчетчиков {city}, монтаж счетчиков воды {city}",
+    "ustanovka-teploschetchikov.html": "установка теплосчетчиков {city}, установка счетчиков тепла {city}, монтаж теплосчетчиков {city}",
+    "ustanovka-umnyh-schetchikov-vody.html": "умные счетчики воды {city}, установка умных счетчиков {city}, смарт счетчики воды {city}",
+    "vyzov-santehnika.html": "вызов сантехника {city}, сантехник на дом {city}, сантехнические услуги {city}",
+    "tehnicheskoe-obsluzhivanie.html": "техобслуживание счетчиков {city}, обслуживание водосчетчиков {city}, ТО счетчиков воды {city}",
+    "uslugi-dlya-biznesa.html": "поверка счетчиков для бизнеса {city}, поверка счетчиков юрлицам {city}, корпоративная поверка {city}",
+    "akkreditovannye-kompanii-po-ustanovke-schetchikov-vody.html": "аккредитованные компании установка счетчиков {city}, лицензированная установка счетчиков {city}",
+    "poryadok-zameny-schetchika-vody.html": "порядок замены счетчика воды {city}, как заменить счетчик воды {city}, правила замены водосчетчика {city}",
+    "pravila-poverki-schetchikov-vody-v-moskve.html": "правила поверки счетчиков воды {city}, закон о поверке счетчиков {city}, сроки поверки счетчиков {city}",
+    "pravilnaya-ustanovka-schetchika.html": "правильная установка счетчика {city}, как установить счетчик воды {city}, требования к установке счетчика {city}",
+}
+
 
 def get_project_root():
     """Возвращает корневую папку проекта"""
@@ -313,6 +336,22 @@ def replace_city_data(content, city_code, filename):
         rf'\g<1>\n{burger_list_html}\n\g<2>',
         content,
         flags=re.DOTALL
+    )
+    
+    # 17. Keywords для страницы
+    if filename in PAGE_KEYWORDS:
+        keywords = PAGE_KEYWORDS[filename].format(city=city["name"])
+        content = re.sub(
+            r'<meta name="keywords" content="[^"]*">',
+            f'<meta name="keywords" content="{keywords}">',
+            content
+        )
+    
+    # 18. Yandex verification
+    content = re.sub(
+        r'(<meta charset="UTF-8">)',
+        r'\1\n        <meta name="yandex-verification" content="6df15c0f1c8542f7" />',
+        content
     )
     
     return content
