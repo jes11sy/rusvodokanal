@@ -527,7 +527,14 @@ function initCustomScripts() {
     if (!link) return;
 
     var cityName = link.textContent.trim();
-    var targetUrl = link.getAttribute("href") || buildCityUrl(cityName);
+    
+    // Всегда строим URL с сохранением текущего пути страницы
+    var targetUrl = buildCityUrl(cityName);
+    
+    // Если не удалось построить URL (например, localhost), используем href из ссылки
+    if (!targetUrl) {
+      targetUrl = link.getAttribute("href");
+    }
 
     if (targetUrl) {
       e.preventDefault();
