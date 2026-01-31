@@ -900,6 +900,37 @@ function initCustomScripts() {
     });
   }
 
+  // Мобильное бургер-меню
+  var burgerBtn = document.querySelector('.header__burger');
+  var burgerMenu = document.querySelector('.header__burger__menu');
+
+  if (burgerBtn && burgerMenu) {
+    burgerBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      burgerBtn.classList.toggle('active');
+      burgerMenu.classList.toggle('header__burger__menu__active');
+      
+      // Блокируем/разблокируем прокрутку страницы
+      if (burgerMenu.classList.contains('header__burger__menu__active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // Закрытие бургер-меню при клике на ссылку внутри меню
+  if (burgerMenu) {
+    var burgerLinks = burgerMenu.querySelectorAll('a');
+    burgerLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        burgerBtn.classList.remove('active');
+        burgerMenu.classList.remove('header__burger__menu__active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
   // FAQ - раскрытие вопросов
   var faqTabs = document.querySelectorAll('.faq__tab');
   
