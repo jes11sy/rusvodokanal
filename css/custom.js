@@ -512,20 +512,39 @@ function initCustomScripts() {
     return protocol + "//" + newHost + port + window.location.pathname + window.location.search + window.location.hash;
   }
 
-  var cityLinks = document.querySelectorAll('.header__top__city__list a, .header__top__city__list__burger a');
-  cityLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var cityName = this.textContent.trim();
+  function attachCityListHandler(listSelector) {
+    var list = document.querySelector(listSelector);
+    if (!list) return;
+
+    list.addEventListener("click", function(e) {
+      var target = e.target;
+      var anchor = target.closest("a");
+      var item = target.closest("li");
+      var cityName = "";
+
+      if (anchor) {
+        cityName = anchor.textContent.trim();
+      } else if (item) {
+        cityName = item.textContent.trim();
+      }
+
+      if (!cityName) return;
+
       var targetUrl = buildCityUrl(cityName);
       if (targetUrl) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = targetUrl;
+      } else if (anchor) {
+        // Если не смогли построить URL, оставляем стандартную навигацию
       } else {
         updateSelectedCity(cityName);
       }
     });
-  });
+  }
+
+  attachCityListHandler(".header__top__city__list");
+  attachCityListHandler(".header__top__city__list__burger");
 
   // Закрытие списка при клике вне его
   document.addEventListener('click', function() {
