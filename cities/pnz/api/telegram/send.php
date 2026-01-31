@@ -37,7 +37,15 @@ if ($input) {
     // Form POST запрос
     $name = $_POST['name'] ?? $_POST['header-name'] ?? '';
     $phone = $_POST['phone'] ?? $_POST['header-phone'] ?? '';
-    $type = $_POST['service'] ?? $_POST['services'] ?? 'Заявка';
+    $type = $_POST['service'] ?? $_POST['services'] ?? '';
+    
+    // Если имя из header-form, значит это "Перезвоните мне"
+    if (isset($_POST['header-name']) || isset($_POST['header-phone'])) {
+        $type = 'Перезвоните мне';
+    }
+    if (empty($type)) {
+        $type = 'Заявка';
+    }
     $subdomain = '';
 }
 
