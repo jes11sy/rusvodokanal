@@ -194,6 +194,9 @@ if (document.querySelector(".about-form")) {
             console.log("Заполните все поля формы!");
         }
     });
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+    });
     phone.addEventListener("input", onPhoneInput);
     // Открытие селекта в форме
     const createServicesSelectorHandlers = () => {
@@ -361,6 +364,9 @@ if (document.querySelector(".application-form")) {
         else {
             console.log("Заполните все поля формы!");
         }
+    });
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
     });
     phone.addEventListener("input", onPhoneInput);
     // Открытие селекта в форме
@@ -1200,6 +1206,7 @@ if (document.querySelector(".header-form")) {
             thanksApplication();
         }
     }
+    headerForm.addEventListener("submit", handleFormSubmit);
     headerSubmitBtn.addEventListener("click", handleFormSubmit);
     phone.addEventListener("input", onPhone);
     function onPhone(event) {
@@ -1645,6 +1652,9 @@ if (document.querySelector(".modal-form")) {
         modalForm.style.display = "block";
         modalForm.classList.add("sale");
         updateTitle();
+    });
+    formModal.addEventListener("submit", function (event) {
+        event.preventDefault();
     });
     phone.addEventListener("input", onPhone);
     // Открытие селекта в форме
