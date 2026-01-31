@@ -361,20 +361,7 @@ def replace_city_data(content, city_code, filename):
         content
     )
     
-    # 19. Add app.js script (with cache-busting version)
-    content = re.sub(
-        r'(<script src="css/swiper\.min\.js">)',
-        r'<script src="js/app.js?ver=2.0"></script>\n        \1',
-        content
-    )
-    # Also handle /js/ path format
-    content = re.sub(
-        r'(<script src="/js/swiper\.min\.js">)',
-        r'<script src="js/app.js?ver=2.0"></script>\n        \1',
-        content
-    )
-    
-    # 20. Yandex Metrika counter
+    # 19. Yandex Metrika counter
     metrika_id = city["metrika_id"]
     metrika_code = f'''<!-- Yandex.Metrika counter -->
 <script type="text/javascript">
