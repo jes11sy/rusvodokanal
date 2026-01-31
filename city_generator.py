@@ -34,7 +34,8 @@ CITIES = {
         "address": "ул. Чернышевского, д. 88",
         "email": "info@rusvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
-        "map_coords": "51.533557, 46.034257",  # Саратов
+        "map_coords": "51.533557, 46.034257",
+        "metrika_id": "106554878",
     },
     "eng": {
         "name": "Энгельс",
@@ -47,6 +48,7 @@ CITIES = {
         "email": "info@rusvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "51.498890, 46.125350",
+        "metrika_id": "106554777",
     },
     "uly": {
         "name": "Ульяновск",
@@ -59,6 +61,7 @@ CITIES = {
         "email": "info@rusvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "54.314192, 48.403123",
+        "metrika_id": "106554946",
     },
     "tol": {
         "name": "Тольятти",
@@ -71,6 +74,7 @@ CITIES = {
         "email": "info@rusvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "53.507836, 49.420393",
+        "metrika_id": "106554924",
     },
     "pnz": {
         "name": "Пенза",
@@ -83,6 +87,7 @@ CITIES = {
         "email": "info@rusvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "53.195042, 45.018316",
+        "metrika_id": "106554851",
     },
     "yar": {
         "name": "Ярославль",
@@ -95,6 +100,7 @@ CITIES = {
         "email": "info@rusvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "57.626559, 39.893813",
+        "metrika_id": "106554966",
     },
     "oms": {
         "name": "Омск",
@@ -107,6 +113,7 @@ CITIES = {
         "email": "info@rusvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "54.989342, 73.368212",
+        "metrika_id": "106554825",
     },
 }
 
@@ -351,6 +358,28 @@ def replace_city_data(content, city_code, filename):
     content = re.sub(
         r'(<meta charset="UTF-8">)',
         r'\1\n        <meta name="yandex-verification" content="6df15c0f1c8542f7" />',
+        content
+    )
+    
+    # 19. Yandex Metrika counter
+    metrika_id = city["metrika_id"]
+    metrika_code = f'''<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){{
+        m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }}}}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id={metrika_id}', 'ym');
+
+    ym({metrika_id}, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/{metrika_id}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+'''
+    content = re.sub(
+        r'(</body>)',
+        metrika_code + r'\1',
         content
     )
     
