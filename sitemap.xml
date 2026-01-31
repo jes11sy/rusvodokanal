@@ -6,97 +6,97 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/about.html</loc>
+    <loc>https://rusvodokanal.ru/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/akkreditovannye-kompanii-po-ustanovke-schetchikov-vody.html</loc>
+    <loc>https://rusvodokanal.ru/akkreditovannye-kompanii-po-ustanovke-schetchikov-vody</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/blagodarnosti.html</loc>
+    <loc>https://rusvodokanal.ru/blagodarnosti</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/kontakty.html</loc>
+    <loc>https://rusvodokanal.ru/kontakty</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/otzyvy.html</loc>
+    <loc>https://rusvodokanal.ru/otzyvy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/politika.html</loc>
+    <loc>https://rusvodokanal.ru/politika</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/pravila-poverki-schetchikov-vody-v-moskve.html</loc>
+    <loc>https://rusvodokanal.ru/pravila-poverki-schetchikov-vody-v-moskve</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/pravilnaya-ustanovka-schetchika.html</loc>
+    <loc>https://rusvodokanal.ru/pravilnaya-ustanovka-schetchika</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/pressa.html</loc>
+    <loc>https://rusvodokanal.ru/pressa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/poryadok-zameny-schetchika-vody.html</loc>
+    <loc>https://rusvodokanal.ru/poryadok-zameny-schetchika-vody</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/sertifikaty.html</loc>
+    <loc>https://rusvodokanal.ru/sertifikaty</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/tehnicheskoe-obsluzhivanie.html</loc>
+    <loc>https://rusvodokanal.ru/tehnicheskoe-obsluzhivanie</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/uslugi-dlya-biznesa.html</loc>
+    <loc>https://rusvodokanal.ru/uslugi-dlya-biznesa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/ustanovka-schetchikov-vody.html</loc>
+    <loc>https://rusvodokanal.ru/ustanovka-schetchikov-vody</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/ustanovka-teploschetchikov.html</loc>
+    <loc>https://rusvodokanal.ru/ustanovka-teploschetchikov</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/ustanovka-umnyh-schetchikov-vody.html</loc>
+    <loc>https://rusvodokanal.ru/ustanovka-umnyh-schetchikov-vody</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/vyzov-santehnika.html</loc>
+    <loc>https://rusvodokanal.ru/vyzov-santehnika</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/zamena-schetchikov-vody.html</loc>
+    <loc>https://rusvodokanal.ru/zamena-schetchikov-vody</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://rusvodokanal.ru/zamena-teploschetchikov.html</loc>
+    <loc>https://rusvodokanal.ru/zamena-teploschetchikov</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
