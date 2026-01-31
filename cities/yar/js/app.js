@@ -179,35 +179,16 @@ if (document.querySelector(".about-form")) {
             // Отправка в Telegram
             sendToTelegram(jsonData.name, jsonData.phone, jsonData.services);
             
-            fetch(`https://${window.location.host}/api/lead/setLead/index.php`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(jsonData)
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                if (data.success) {
-                    modal.style.display = "block";
-                    //getGoogleToken(recaptchaInput);
-                }
-                if (modalOverlay) {
-                    modalOverlay.style.display = "block";
-                    setTimeout(() => {
-                        modalOverlay.style.display = "none";
-                        modal.style.display = "none";
-                    }, 3000);
-                    clearForm();
-                }
-                else {
-                    console.log("При отправке заявки произошла ошибка.");
-                }
-            })
-                .catch((error) => {
-                console.error("Error:", error);
-                alert("При отправке заявки произошла ошибка.");
-            });
+            // Показываем "спасибо"
+            modal.style.display = "block";
+            if (modalOverlay) {
+                modalOverlay.style.display = "block";
+                setTimeout(() => {
+                    modalOverlay.style.display = "none";
+                    modal.style.display = "none";
+                }, 3000);
+            }
+            clearForm();
         }
         else {
             console.log("Заполните все поля формы!");
@@ -366,34 +347,16 @@ if (document.querySelector(".application-form")) {
             // Отправка в Telegram
             sendToTelegram(jsonData.name, jsonData.phone, jsonData.services);
             
-            fetch(`https://${window.location.host}/api/lead/setLead/index.php`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(jsonData)
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                if (data.success) {
-                    modal.style.display = "block";
-                }
-                if (modalOverlay) {
-                    modalOverlay.style.display = "block";
-                    setTimeout(() => {
-                        modalOverlay.style.display = "none";
-                        modal.style.display = "none";
-                    }, 3000);
-                    clearForm();
-                }
-                else {
-                    console.log("При отправке заявки произошла ошибка.");
-                }
-            })
-                .catch((error) => {
-                console.error("Error:", error);
-                alert("При отправке заявки произошла ошибка.");
-            });
+            // Показываем "спасибо"
+            modal.style.display = "block";
+            if (modalOverlay) {
+                modalOverlay.style.display = "block";
+                setTimeout(() => {
+                    modalOverlay.style.display = "none";
+                    modal.style.display = "none";
+                }, 3000);
+            }
+            clearForm();
         }
         else {
             console.log("Заполните все поля формы!");
@@ -1215,7 +1178,8 @@ if (document.querySelector(".header-form")) {
             phone.classList.add("error");
         }
     }
-    function handleFormSubmit() {
+    function handleFormSubmit(event) {
+        event.preventDefault();
         validateName();
         validatePhone();
         if (nameHeaderFormState && phoneHeaderFormState) {
@@ -1230,25 +1194,10 @@ if (document.querySelector(".header-form")) {
             // Отправка в Telegram
             sendToTelegram(jsonData.name, jsonData.phone, jsonData.services);
             
-            fetch(`https://${document.location.host}/api/lead/setLead/index.php`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(jsonData)
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                if (data.success) {
-                    clearForm();
-                    formModalClose();
-                    thanksApplication();
-                }
-                else {
-                    console.error(data.error);
-                    console.log("Что-то пошло не так");
-                }
-            });
+            // Показываем "спасибо"
+            clearForm();
+            formModalClose();
+            thanksApplication();
         }
     }
     headerSubmitBtn.addEventListener("click", handleFormSubmit);
@@ -1662,31 +1611,10 @@ if (document.querySelector(".modal-form")) {
             // Отправка в Telegram
             sendToTelegram(jsonData.name, jsonData.phone, jsonData.services);
             
-            fetch(`https://${document.location.host}/api/lead/setLead/index.php`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(jsonData)
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                if (data.success) {
-                    clearForm();
-                    formModalClose();
-                    thanksApplication();
-                    // setTimeout(() => {
-                    //   modalOverlay.style.display = "none";
-                    // }, 2000);
-                }
-                else {
-                    console.log("При отправке заявки произошла ошибка.");
-                }
-            })
-                .catch((error) => {
-                console.error("Error:", error);
-                alert("При отправке заявки произошла ошибка.");
-            });
+            // Показываем "спасибо"
+            clearForm();
+            formModalClose();
+            thanksApplication();
         }
         else {
             console.log("Заполните все поля формы!");
