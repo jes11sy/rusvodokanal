@@ -13,7 +13,7 @@
         const host = window.location.hostname.split(".");
         if (host.length > 2) {
             const sub = host.slice(0, host.length - 2).join('.');
-            if (["msk", "spb", "kazan", "ekb", "chel"].includes(sub)) {
+            if (["msk", "spb", "kazan", "ekb", "chel", "pnz", "tol", "oms", "yar", "sar", "uly"].includes(sub)) {
                 if (sub === "ekb") return "ekaterinburg";
                 return sub;
             }
@@ -101,6 +101,36 @@
                 "bee|sms|site": ["+78123132295", "+7 812 313-22-95"],
                 "bee|sms|tel": ["+78123132295", "+7 812 313-22-95"],
             }
+        },
+
+        pnz: {
+            default: ["+79845004830", "+7 (984) 500-48-30"],
+            utm: {}
+        },
+
+        tol: {
+            default: ["+79585407673", "+7 (958) 540-76-73"],
+            utm: {}
+        },
+
+        oms: {
+            default: ["+79539979880", "+7 (953) 997-98-80"],
+            utm: {}
+        },
+
+        yar: {
+            default: ["+79539979962", "+7 (953) 997-99-62"],
+            utm: {}
+        },
+
+        sar: {
+            default: ["+79344771925", "+7 (934) 477-19-25"],
+            utm: {}
+        },
+
+        uly: {
+            default: ["+79344772392", "+7 (934) 477-23-92"],
+            utm: {}
         }
     };
 
