@@ -361,18 +361,6 @@ def replace_city_data(content, city_code, filename):
         content
     )
     
-    # 20. Заменяем action="" на action="/api/telegram/send.php" в формах
-    content = re.sub(
-        r'<form([^>]*) action=""',
-        r'<form\1 action="/api/telegram/send.php"',
-        content
-    )
-    content = re.sub(
-        r'<form([^>]*) action="submit-form"',
-        r'<form\1 action="/api/telegram/send.php"',
-        content
-    )
-    
     # 19. Yandex Metrika counter
     metrika_id = city["metrika_id"]
     metrika_code = f'''<!-- Yandex.Metrika counter -->
