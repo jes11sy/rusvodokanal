@@ -510,9 +510,19 @@ function initCustomScripts() {
 
     if (!subdomain || !host) return null;
 
-    var baseHost = host;
-    if (host.split(".").length >= 3) {
-      baseHost = host.split(".").slice(1).join(".");
+    // Находим базовый домен (rusvodokanal.ru)
+    var parts = host.split(".");
+    var baseHost;
+    
+    if (parts.length >= 3) {
+      // Уже есть поддомен (sar.rusvodokanal.ru) — убираем его
+      baseHost = parts.slice(1).join(".");
+    } else if (parts.length === 2) {
+      // Просто rusvodokanal.ru
+      baseHost = host;
+    } else {
+      // localhost или что-то странное
+      return null;
     }
 
     var newHost = subdomain + "." + baseHost;
@@ -523,16 +533,19 @@ function initCustomScripts() {
     var target = e.target;
     if (!target || !target.closest) return;
 
-    var link = target.closest(".header__top__city__list a, .header__top__city__list__burger a");
-    if (!link) return;
+    // Проверяем клик на элемент списка городов или ссылку внутри него
+    var listItem = target.closest(".header__top__city__item, .header__top__city__burger__item");
+    if (!listItem) return;
 
-    var cityName = link.textContent.trim();
+    // Находим ссылку внутри элемента списка
+    var link = listItem.querySelector("a");
+    var cityName = link ? link.textContent.trim() : listItem.textContent.trim();
     
-    // Всегда строим URL с сохранением текущего пути страницы
+    // Строим URL с сохранением текущего пути страницы
     var targetUrl = buildCityUrl(cityName);
     
     // Если не удалось построить URL (например, localhost), используем href из ссылки
-    if (!targetUrl) {
+    if (!targetUrl && link) {
       targetUrl = link.getAttribute("href");
     }
 
