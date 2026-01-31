@@ -1,5 +1,9 @@
 
 function initCustomScripts() {
+  // Hide flash of default city until replacements applied
+  var revealTimer = setTimeout(function() {
+    document.documentElement.classList.add("city-ready");
+  }, 1500);
 
   var phoneIds = ["phone-about", "phone", "phone-header-form"];
 
@@ -481,6 +485,9 @@ function initCustomScripts() {
   } else {
     updateSelectedCity("Саратов");
   }
+
+  document.documentElement.classList.add("city-ready");
+  clearTimeout(revealTimer);
 
   function getSubdomainByCity(cityName) {
     var map = {

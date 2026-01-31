@@ -1,3 +1,6 @@
+html:not(.city-ready) body {
+  visibility: hidden;
+}
 .container {
     width: 100%;
     overflow: hidden
