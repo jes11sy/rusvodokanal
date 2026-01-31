@@ -170,46 +170,46 @@ if (document.querySelector(".about-form")) {
     phone.addEventListener("input", onPhoneInput);
     // Открытие селекта в форме
     const createServicesSelectorHandlers = () => {
-        const openSelectedAbout = document.querySelector(".about-form-select");
-        openSelectedAbout.addEventListener("click", (event) => {
-            event.preventDefault();
-            // Проверка текущего состояния overflow и переключение его значения
-            if (openSelectedAbout.style.overflow === "visible") {
-                openSelectedAbout.style.overflow = "hidden";
-                openSelectedAbout.classList.remove("open"); // удаляем класс open, чтобы вернуть before в исходное состояние
-            }
-            else {
-                openSelectedAbout.style.overflow = "visible";
-                openSelectedAbout.classList.add("open"); // добавляем класс open для вращения before
-            }
-        });
-        // Закрытие селекта при клике вне его области
-        document.addEventListener("click", (event) => {
-            if (!openSelectedAbout.contains(event.target)) {
-                openSelectedAbout.style.overflow = "hidden";
-                openSelectedAbout.classList.remove("open");
-            }
-        });
-        function initializeSelectList() {
-            const list = document.querySelector(".about-form-select__list");
-            if (!list)
-                return;
-            const items = Array.from(list.querySelectorAll(".about-form-select__item"));
-            items.forEach(item => {
-                item.addEventListener("click", () => {
-                    items.forEach(i => {
-                        i.classList.remove("about-form-select__checked");
-                        i.style.color = "#666666";
-                    });
-                    item.classList.add("about-form-select__checked");
-                    list.insertBefore(item, list.firstChild);
-                    if (item.classList.contains("about-form-select__checked")) {
-                        item.style.color = "#175CAB";
-                    }
-                });
+        const allSelects = document.querySelectorAll(".about-form-select");
+        allSelects.forEach(openSelectedAbout => {
+            openSelectedAbout.addEventListener("click", (event) => {
+                event.preventDefault();
+                // Проверка текущего состояния overflow и переключение его значения
+                if (openSelectedAbout.style.overflow === "visible") {
+                    openSelectedAbout.style.overflow = "hidden";
+                    openSelectedAbout.classList.remove("open"); // удаляем класс open, чтобы вернуть before в исходное состояние
+                }
+                else {
+                    openSelectedAbout.style.overflow = "visible";
+                    openSelectedAbout.classList.add("open"); // добавляем класс open для вращения before
+                }
             });
-        }
-        initializeSelectList();
+            // Закрытие селекта при клике вне его области
+            document.addEventListener("click", (event) => {
+                if (!openSelectedAbout.contains(event.target)) {
+                    openSelectedAbout.style.overflow = "hidden";
+                    openSelectedAbout.classList.remove("open");
+                }
+            });
+            // Инициализация списка для каждого селекта
+            const list = openSelectedAbout.querySelector(".about-form-select__list");
+            if (list) {
+                const items = Array.from(list.querySelectorAll(".about-form-select__item"));
+                items.forEach(item => {
+                    item.addEventListener("click", () => {
+                        items.forEach(i => {
+                            i.classList.remove("about-form-select__checked");
+                            i.style.color = "#666666";
+                        });
+                        item.classList.add("about-form-select__checked");
+                        list.insertBefore(item, list.firstChild);
+                        if (item.classList.contains("about-form-select__checked")) {
+                            item.style.color = "#175CAB";
+                        }
+                    });
+                });
+            }
+        });
     };
     createServicesSelectorHandlers();
     function onPhoneInput(event) {
@@ -352,46 +352,46 @@ if (document.querySelector(".application-form")) {
     phone.addEventListener("input", onPhoneInput);
     // Открытие селекта в форме
     const createServicesSelectorHandlers = () => {
-        const openSelected = document.querySelector(".application-form-select");
-        openSelected.addEventListener("click", (event) => {
-            event.preventDefault();
-            // Проверка текущего состояния overflow и переключение его значения
-            if (openSelected.style.overflow === "visible") {
-                openSelected.style.overflow = "hidden";
-                openSelected.classList.remove("open"); // удаляем класс open, чтобы вернуть before в исходное состояние
-            }
-            else {
-                openSelected.style.overflow = "visible";
-                openSelected.classList.add("open"); // добавляем класс open для вращения before
-            }
-        });
-        // Закрытие селекта при клике вне его области
-        document.addEventListener("click", (event) => {
-            if (!openSelected.contains(event.target)) {
-                openSelected.style.overflow = "hidden";
-                openSelected.classList.remove("open");
-            }
-        });
-        function initializeSelectList() {
-            const list = document.querySelector(".application-form-select__list");
-            if (!list)
-                return;
-            const items = Array.from(list.querySelectorAll(".application-form-select__item"));
-            items.forEach(item => {
-                item.addEventListener("click", () => {
-                    items.forEach(i => {
-                        i.classList.remove("application-form-select__checked");
-                        i.style.color = "#666666";
-                    });
-                    item.classList.add("application-form-select__checked");
-                    list.insertBefore(item, list.firstChild);
-                    if (item.classList.contains("application-form-select__checked")) {
-                        item.style.color = "#175CAB";
-                    }
-                });
+        const allSelects = document.querySelectorAll(".application-form-select");
+        allSelects.forEach(openSelected => {
+            openSelected.addEventListener("click", (event) => {
+                event.preventDefault();
+                // Проверка текущего состояния overflow и переключение его значения
+                if (openSelected.style.overflow === "visible") {
+                    openSelected.style.overflow = "hidden";
+                    openSelected.classList.remove("open"); // удаляем класс open, чтобы вернуть before в исходное состояние
+                }
+                else {
+                    openSelected.style.overflow = "visible";
+                    openSelected.classList.add("open"); // добавляем класс open для вращения before
+                }
             });
-        }
-        initializeSelectList();
+            // Закрытие селекта при клике вне его области
+            document.addEventListener("click", (event) => {
+                if (!openSelected.contains(event.target)) {
+                    openSelected.style.overflow = "hidden";
+                    openSelected.classList.remove("open");
+                }
+            });
+            // Инициализация списка для каждого селекта
+            const list = openSelected.querySelector(".application-form-select__list");
+            if (list) {
+                const items = Array.from(list.querySelectorAll(".application-form-select__item"));
+                items.forEach(item => {
+                    item.addEventListener("click", () => {
+                        items.forEach(i => {
+                            i.classList.remove("application-form-select__checked");
+                            i.style.color = "#666666";
+                        });
+                        item.classList.add("application-form-select__checked");
+                        list.insertBefore(item, list.firstChild);
+                        if (item.classList.contains("application-form-select__checked")) {
+                            item.style.color = "#175CAB";
+                        }
+                    });
+                });
+            }
+        });
     };
     createServicesSelectorHandlers();
     function onPhoneInput(event) {
