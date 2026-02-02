@@ -1053,12 +1053,15 @@ if (document.querySelector(".header")) {
         const burgerMenu = document.querySelector(".header__burger");
         const navMenu = document.querySelector(".header__burger__menu");
         if (!burgerMenu || !navMenu) return;
-        const handleBurgerClick = () => {
+        const handleBurgerClick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             navMenu.classList.toggle("header__burger__menu__active");
             burgerMenu.classList.toggle("active");
             headerPage.style.backgroundColor = "white";
         };
         burgerMenu.addEventListener("click", handleBurgerClick);
+        burgerMenu.addEventListener("touchend", handleBurgerClick);
     };
     createCitySelectorHandlers();
     createCitySelectorBurger();
