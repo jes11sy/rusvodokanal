@@ -819,6 +819,7 @@ if (document.querySelector(".header")) {
         const openSelected = document.querySelector(".header__top__city_selected");
         const cityListWrapper = document.querySelector(".header__top__city__list");
         const cityList = document.querySelectorAll(".header__top__city__item");
+        if (!openSelected || !cityListWrapper) return;
         // Проверяем наличие данных в sessionStorage
         //     const tel = sessionStorage.getItem("tel");
         //     const phone = sessionStorage.getItem("phone");
@@ -899,6 +900,7 @@ if (document.querySelector(".header")) {
         const openBurgerSelected = document.querySelector(".header__top__city_selected__burger");
         const cityListBurgerWrapper = document.querySelector(".header__top__city__list__burger");
         const cityListBurger = document.querySelectorAll(".header__top__city__burger__item");
+        if (!openBurgerSelected || !cityListBurgerWrapper) return;
         const handleOpenBurgerMouseOver = (event) => {
             event.preventDefault();
             cityListBurgerWrapper.style.display = "block";
@@ -969,6 +971,7 @@ if (document.querySelector(".header")) {
     const createServiceSelectorHandlers = () => {
         const openBottomSelector = document.querySelector(".header__bottom__navigation__item_selected");
         const servicesListWrapper = document.getElementById("services__list");
+        if (!openBottomSelector || !servicesListWrapper) return;
         const handleOpenMouseOver = (event) => {
             event.preventDefault();
             servicesListWrapper.classList.add("header__bottom__services__list-active");
@@ -1049,6 +1052,7 @@ if (document.querySelector(".header")) {
     const createBurgerMenuHandlers = () => {
         const burgerMenu = document.querySelector(".header__burger");
         const navMenu = document.querySelector(".header__burger__menu");
+        if (!burgerMenu || !navMenu) return;
         const handleBurgerClick = () => {
             navMenu.classList.toggle("header__burger__menu__active");
             burgerMenu.classList.toggle("active");
