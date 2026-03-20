@@ -21,17 +21,22 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
         try {
             const data = JSON.parse(body);
-            if (!data.name || !data.phone || data.phone.length < 6) {
-                res.writeHead(400);
-                res.end(JSON.stringify({ error: 'Invalid data' }));
-                return;
-            }
 
-            const text = '\u{1F514} Новая заявка с РусВодоканал (' + (data.city || 'Саратов') + ')\n\n'
-                + '\u{1F464} Имя: ' + data.name + '\n'
-                + '\u{1F4DE} Телефон: ' + data.phone + '\n'
-                + '\u{1F4CB} Тип заявки: ' + (data.type || 'Заявка') + '\n'
-                + '\u23F0 Время: ' + new Date().toLocaleString('ru-RU');
+            let text;
+            if (data.message) {
+                text = data.message;
+            } else {
+                if (!data.name || !data.phone || data.phone.length < 6) {
+                    res.writeHead(400);
+                    res.end(JSON.stringify({ error: 'Invalid data' }));
+                    return;
+                }
+                text = '\u{1F514} Новая заявка с РусВодоканал (' + (data.city || 'Саратов') + ')\n\n'
+                    + '\u{1F464} Имя: ' + data.name + '\n'
+                    + '\u{1F4DE} Телефон: ' + data.phone + '\n'
+                    + '\u{1F4CB} Тип заявки: ' + (data.type || 'Заявка') + '\n'
+                    + '\u23F0 Время: ' + new Date().toLocaleString('ru-RU');
+            }
 
             const payload = JSON.stringify({
                 chat_id: CHAT_ID,
