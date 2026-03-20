@@ -2,7 +2,7 @@ const http = require('http');
 const https = require('https');
 
 const TOKEN = '8391094388:AAGyYn4RWPMilwdfkrq3j1raso5CNcJ97H8';
-const CHAT_ID = '-4840450399';
+const CHAT_ID = '-1003752788353';
 const PROXY_HOST = '181.177.85.108';
 const PROXY_PORT = 9336;
 const PROXY_USER = 'GKvDm1';
