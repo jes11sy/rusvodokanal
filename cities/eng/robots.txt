@@ -2,10 +2,10 @@ User-agent: *
 Allow: /
 
 # Главное зеркало для Яндекса
-Host: eng.rusvodokanal.ru
+Host: eng.russvodokanal.ru
 
 # Sitemap
-Sitemap: https://eng.rusvodokanal.ru/sitemap.xml
+Sitemap: https://eng.russvodokanal.ru/sitemap.xml
 
 # Запрещённые директории
 Disallow: /cgi-bin/

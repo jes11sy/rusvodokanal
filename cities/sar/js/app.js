@@ -58,7 +58,7 @@ function buildCityUrlForRedirect(cityName, fallbackHref) {
         // Уже есть поддомен — убираем его
         baseHost = parts.slice(1).join(".");
     } else if (parts.length === 2) {
-        // Просто rusvodokanal.ru
+        // Просто russvodokanal.ru
         baseHost = host;
     } else {
         // localhost — используем fallback href
@@ -2195,60 +2195,6 @@ if (document.querySelector(".news")) {
 "use strict";
 
 "use strict";
-if (document.querySelector(".partners")) {
-    function allowTouchMove() {
-        return false; // Запрещаем движение слайдов
-    }
-    const swiperPartners = new Swiper(".partners__swiper", {
-        loop: true,
-        spaceBetween: 0,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        allowTouchMove: allowTouchMove(),
-        speed: 3500,
-        autoplay: {
-            delay: 0,
-            disableOnInteraction: false
-        },
-        navigation: {
-            nextEl: ".partners .swiper-button-next", // Navigation buttons
-            prevEl: ".partners .swiper-button-prev"
-        },
-        // @ts-ignore
-        // loopAdditionalSlides: 10
-    });
-}
-document.addEventListener("DOMContentLoaded", function () {
-    function allowTouchMove() {
-        return false; // Запрещаем движение слайдов
-    }
-    if (document.querySelector(".partners__swiper")) {
-        const swiperPartners = new Swiper(".partners__swiper", {
-            loop: true,
-            spaceBetween: 0,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            allowTouchMove: allowTouchMove(),
-            speed: 3500,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false
-            },
-            navigation: {
-                nextEl: ".partners .swiper-button-next",
-                prevEl: ".partners .swiper-button-prev"
-            },
-            // @ts-ignore
-            // loopAdditionalSlides: 10
-        });
-    }
-});
-
-"use strict";
-
-"use strict";
-
-"use strict";
 
 "use strict";
 
@@ -2414,7 +2360,7 @@ if (document.querySelector(".reviews-list")) {
     }
     // Подгрузка новых отзывов
     reviewsLoadMoreBtn === null || reviewsLoadMoreBtn === void 0 ? void 0 : reviewsLoadMoreBtn.addEventListener("click", () => {
-        const apiHost = window.location.host || "rusvodokanal.ru";
+        const apiHost = window.location.host || "russvodokanal.ru";
         const apiUrl = `https://${apiHost}/api/reviews/getReviews/index.php`;
         const data = {
             counter: counter
@@ -2485,23 +2431,6 @@ if (document.querySelector(".reviews-list")) {
 "use strict";
 
 "use strict";
-if (document.querySelector(".thanks")) {
-    const swiperReviews = new Swiper(".thanks__swiper", {
-        speed: 500,
-        spaceBetween: 0,
-        centeredSlides: false,
-        allowTouchMove: true,
-        slidesPerView: "auto",
-        autoplay: false,
-        loop: false,
-        navigation: {
-            nextEl: ".thanks .swiper-button-next",
-            prevEl: ".thanks .swiper-button-prev"
-        },
-        disableOnInteraction: true
-    });
-}
-
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }

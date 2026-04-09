@@ -1,0 +1,21 @@
+[Unit]
+Description=RussVodokanal Telegram notify (tg-proxy.js)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/russvodokanal
+ExecStart=/usr/bin/node /var/www/russvodokanal/tg-proxy.js
+Restart=always
+RestartSec=5
+# Ограничить пользователя (нужны права на чтение node_modules):
+# User=www-data
+# Group=www-data
+NoNewPrivileges=true
+
+# Секреты лучше вынести сюда:
+# EnvironmentFile=-/etc/default/tg-proxy
+
+[Install]
+WantedBy=multi-user.target

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://rusvodokanal.ru/sitemap.xml
+Sitemap: https://russvodokanal.ru/sitemap.xml
 
 # Disallow admin and system directories
 Disallow: /cgi-bin/

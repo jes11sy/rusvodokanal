@@ -123,7 +123,7 @@
         const addressElements = document.querySelectorAll(".header__top__address-info, .footer__logo-contact-descr");
         addressElements.forEach(function(el) {
             if (el.classList.contains("footer__logo-contact-descr")) {
-                el.innerHTML = 'ООО «Городской Центр Учёта и Экономии Ресурсов»<br/>Адрес: ' + address;
+                el.innerHTML = 'ООО «НПаП»<br/>Адрес: ' + address;
             } else {
                 el.textContent = address;
             }

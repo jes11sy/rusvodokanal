@@ -2569,6 +2569,16 @@ legend {
     max-height: 54px
 }
 
+.footer__brand-name {
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: .02em;
+    white-space: nowrap
+}
+
 .footer__logo-contact-descr {
     font-size: 14px;
     line-height: 125%;
@@ -5845,6 +5855,69 @@ legend {
 .partners .swiper-slide img,.partners .swiper-slide svg {
     width: 100%;
     height: auto
+}
+
+.partners .partners__swiper.partners__marquee-swiper {
+    overflow: hidden;
+    max-width: 100%
+}
+
+.partners .partners__marquee-track.partners__swiper-wrapper {
+    position: relative;
+    width: -webkit-max-content !important;
+    width: max-content !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: partners-marquee-x var(--partners-marquee-duration, 55s) linear infinite !important;
+    animation: partners-marquee-x var(--partners-marquee-duration, 55s) linear infinite !important;
+    -webkit-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+    will-change: transform
+}
+
+.partners .partners__marquee-track .swiper-slide {
+    -ms-flex-negative: 0;
+    flex-shrink: 0
+}
+
+@-webkit-keyframes partners-marquee-x {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+
+    100% {
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+}
+
+@keyframes partners-marquee-x {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+
+    100% {
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .partners .partners__marquee-track.partners__swiper-wrapper {
+        -webkit-animation: none;
+        animation: none
+    }
 }
 
 .plumber {
@@ -9710,6 +9783,10 @@ legend {
     .footer__logo-contact-descr {
         font-size: 12px;
         padding: 0
+    }
+
+    .footer__brand-name {
+        font-size: 17px
     }
 
     .footer__logo__contact__wrapper {

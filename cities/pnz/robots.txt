@@ -2,10 +2,10 @@ User-agent: *
 Allow: /
 
 # Главное зеркало для Яндекса
-Host: pnz.rusvodokanal.ru
+Host: pnz.russvodokanal.ru
 
 # Sitemap
-Sitemap: https://pnz.rusvodokanal.ru/sitemap.xml
+Sitemap: https://pnz.russvodokanal.ru/sitemap.xml
 
 # Запрещённые директории
 Disallow: /cgi-bin/

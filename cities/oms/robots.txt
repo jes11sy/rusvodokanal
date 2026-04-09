@@ -2,10 +2,10 @@ User-agent: *
 Allow: /
 
 # Главное зеркало для Яндекса
-Host: oms.rusvodokanal.ru
+Host: oms.russvodokanal.ru
 
 # Sitemap
-Sitemap: https://oms.rusvodokanal.ru/sitemap.xml
+Sitemap: https://oms.russvodokanal.ru/sitemap.xml
 
 # Запрещённые директории
 Disallow: /cgi-bin/

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="npap_brand_drop" x1="44" y1="2" x2="4" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2FC6E7"/>
+      <stop offset="1" stop-color="#4E97ED"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#npap_brand_drop)"/>
+  <path d="M24 9.5c-5.2 8.8-10.5 15.5-10.5 22.3a10.5 10.5 0 1021 0c0-6.8-5.3-13.5-10.5-22.3z" fill="#fff" fill-opacity=".98"/>
+  <ellipse cx="20" cy="26" rx="3.2" ry="4" fill="#fff" fill-opacity=".22"/>
+</svg>

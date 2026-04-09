@@ -1,5 +1,18 @@
 
 function initCustomScripts() {
+  document.querySelectorAll(".partners .partners__swiper").forEach(function (swiperEl) {
+    var wrap = swiperEl.querySelector(".partners__swiper-wrapper");
+    if (!wrap || wrap.children.length === 0) return;
+    swiperEl.classList.remove("swiper");
+    wrap.classList.remove("swiper-wrapper");
+    var slides = Array.prototype.slice.call(wrap.children);
+    slides.forEach(function (node) {
+      wrap.appendChild(node.cloneNode(true));
+    });
+    swiperEl.classList.add("partners__marquee-swiper");
+    wrap.classList.add("partners__marquee-track");
+  });
+
   // Hide flash of default city until replacements applied
   var revealTimer = setTimeout(function() {
     document.documentElement.classList.add("city-ready");
@@ -510,15 +523,15 @@ function initCustomScripts() {
 
     if (!subdomain || !host) return null;
 
-    // Находим базовый домен (rusvodokanal.ru)
+    // Находим базовый домен (russvodokanal.ru)
     var parts = host.split(".");
     var baseHost;
     
     if (parts.length >= 3) {
-      // Уже есть поддомен (sar.rusvodokanal.ru) — убираем его
+      // Уже есть поддомен (sar.russvodokanal.ru) — убираем его
       baseHost = parts.slice(1).join(".");
     } else if (parts.length === 2) {
-      // Просто rusvodokanal.ru
+      // Просто russvodokanal.ru
       baseHost = host;
     } else {
       // localhost или что-то странное
@@ -812,29 +825,7 @@ function initCustomScripts() {
     initSwiperIfNeeded(".about-advantages__swiper", ".about-advantages");
     initSwiperIfNeeded(".advantages__swiper", ".advantages");
     initSwiperIfNeeded(".masters__swiper", ".masters");
-    initSwiperIfNeeded(".certificate__swiper", ".certificate");
-    initSwiperIfNeeded(".thanks__swiper", ".thanks");
   });
-
-  function normalizeCertificateButtonLink() {
-    var buttons = document.querySelectorAll(".certificate__btn");
-    buttons.forEach(function(btn) {
-      btn.classList.remove("headerForm");
-      btn.setAttribute("href", "sertifikaty.html");
-    });
-  }
-
-  normalizeCertificateButtonLink();
-
-  function normalizeThanksButtonLink() {
-    var buttons = document.querySelectorAll(".thanks__btn");
-    buttons.forEach(function(btn) {
-      btn.classList.remove("headerForm");
-      btn.setAttribute("href", "blagodarnosti.html");
-    });
-  }
-
-  normalizeThanksButtonLink();
 
   function normalizeArticlesLinks() {
     var articleLinks = document.querySelectorAll(".articles__link");
@@ -863,7 +854,7 @@ function initCustomScripts() {
 
   function normalizeEmail() {
     var oldEmail = "info@gcur.ru";
-    var newEmail = "info@rusvodokanal.ru";
+    var newEmail = "info@russvodokanal.ru";
 
     var mailLinks = document.querySelectorAll('a[href^="mailto:"]');
     mailLinks.forEach(function(link) {
@@ -938,22 +929,6 @@ function initCustomScripts() {
           document.body.style.overflow = ''; // Возвращаем прокрутку страницы
         }
       }
-    });
-  }
-
-  // Карусель партнеров
-  if (typeof Swiper !== "undefined" && document.querySelector(".partners__swiper")) {
-    new Swiper('.partners__swiper', {
-      slidesPerView: 'auto',
-      spaceBetween: 30,
-      loop: true,
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false,
-      },
-      speed: 3000,
-      freeMode: true,
-      freeModeMomentum: false,
     });
   }
 

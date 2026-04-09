@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="npap_brand" x1="44" y1="2" x2="4" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2FC6E7"/>
+      <stop offset="1" stop-color="#4E97ED"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#npap_brand)"/>
+  <path d="M3 25.5c5-3.2 10-3.2 15 0s10 3.2 15 0 10-3.2 15 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M3 31.5c5-3.2 10-3.2 15 0s10 3.2 15 0 10-3.2 15 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".88"/>
+  <path d="M3 37.5c5-3.2 10-3.2 15 0s10 3.2 15 0 10-3.2 15 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".72"/>
+</svg>

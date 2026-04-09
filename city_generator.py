@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-SSG Генератор для мультигородского сайта rusvodokanal.ru
+SSG Генератор для мультигородского сайта russvodokanal.ru
 Создаёт статические версии сайта для каждого города с уникальным SEO.
 
 Использование:
@@ -32,7 +32,7 @@ CITIES = {
         "phone": "+7 (934) 477-19-25",
         "phone_raw": "+79344771925",
         "address": "ул. Чернышевского, д. 88",
-        "email": "info@rusvodokanal.ru",
+        "email": "info@russvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "51.533557, 46.034257",
         "metrika_id": "106554878",
@@ -45,7 +45,7 @@ CITIES = {
         "phone": "+7 (934) 477-19-26",
         "phone_raw": "+79344771926",
         "address": "ул. Ленина, д. 10",
-        "email": "info@rusvodokanal.ru",
+        "email": "info@russvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "51.498890, 46.125350",
         "metrika_id": "106554777",
@@ -58,7 +58,7 @@ CITIES = {
         "phone": "+7 (934) 477-19-27",
         "phone_raw": "+79344771927",
         "address": "ул. Гончарова, д. 25",
-        "email": "info@rusvodokanal.ru",
+        "email": "info@russvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "54.314192, 48.403123",
         "metrika_id": "106554946",
@@ -71,7 +71,7 @@ CITIES = {
         "phone": "+7 (934) 477-19-28",
         "phone_raw": "+79344771928",
         "address": "ул. Революционная, д. 52",
-        "email": "info@rusvodokanal.ru",
+        "email": "info@russvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "53.507836, 49.420393",
         "metrika_id": "106554924",
@@ -84,7 +84,7 @@ CITIES = {
         "phone": "+7 (934) 477-19-29",
         "phone_raw": "+79344771929",
         "address": "ул. Московская, д. 15",
-        "email": "info@rusvodokanal.ru",
+        "email": "info@russvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "53.195042, 45.018316",
         "metrika_id": "106554851",
@@ -97,7 +97,7 @@ CITIES = {
         "phone": "+7 (934) 477-19-30",
         "phone_raw": "+79344771930",
         "address": "ул. Свободы, д. 40",
-        "email": "info@rusvodokanal.ru",
+        "email": "info@russvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "57.626559, 39.893813",
         "metrika_id": "106554966",
@@ -110,7 +110,7 @@ CITIES = {
         "phone": "+7 (934) 477-19-31",
         "phone_raw": "+79344771931",
         "address": "ул. Ленина, д. 20",
-        "email": "info@rusvodokanal.ru",
+        "email": "info@russvodokanal.ru",
         "work_hours": "9:00–21:00 ежедневно",
         "map_coords": "54.989342, 73.368212",
         "metrika_id": "106554825",
@@ -118,7 +118,7 @@ CITIES = {
 }
 
 # Базовый домен
-BASE_DOMAIN = "rusvodokanal.ru"
+BASE_DOMAIN = "russvodokanal.ru"
 
 # Папки и файлы для копирования (относительно корня проекта)
 COPY_DIRS = ["css", "js", "img"]
@@ -150,12 +150,12 @@ HTML_FILES = [
 # Keywords для каждой страницы (шаблон с {city} для подстановки города)
 PAGE_KEYWORDS = {
     "index.html": "поверка счетчиков воды {city}, замена счетчиков воды {city}, установка счетчиков воды {city}, поверка водосчетчиков {city}",
-    "about.html": "ТехСервис {city}, служба поверки счетчиков {city}, метрологическая служба {city}",
-    "kontakty.html": "контакты ТехСервис {city}, адрес поверка счетчиков {city}, телефон поверка счетчиков {city}",
-    "otzyvy.html": "отзывы поверка счетчиков {city}, отзывы ТехСервис {city}, отзывы замена счетчиков {city}",
+    "about.html": "НПаП {city}, служба поверки счетчиков {city}, метрологическая служба {city}",
+    "kontakty.html": "контакты НПаП {city}, адрес поверка счетчиков {city}, телефон поверка счетчиков {city}",
+    "otzyvy.html": "отзывы поверка счетчиков {city}, отзывы НПаП {city}, отзывы замена счетчиков {city}",
     "sertifikaty.html": "сертификаты поверка счетчиков {city}, аккредитация поверка {city}, лицензия поверка счетчиков {city}",
-    "blagodarnosti.html": "благодарности ТехСервис {city}, награды поверка счетчиков {city}",
-    "pressa.html": "статьи поверка счетчиков {city}, новости ТехСервис {city}",
+    "blagodarnosti.html": "благодарности НПаП {city}, награды поверка счетчиков {city}",
+    "pressa.html": "статьи поверка счетчиков {city}, новости НПаП {city}",
     "zamena-schetchikov-vody.html": "замена счетчиков воды {city}, замена водосчетчиков {city}, заменить счетчик воды {city}, замена водомера {city}",
     "zamena-teploschetchikov.html": "замена теплосчетчиков {city}, замена счетчиков тепла {city}, заменить теплосчетчик {city}",
     "ustanovka-schetchikov-vody.html": "установка счетчиков воды {city}, установка водосчетчиков {city}, монтаж счетчиков воды {city}",
@@ -227,22 +227,22 @@ def replace_city_data(content, city_code, filename):
     
     # 1. Canonical URL
     content = re.sub(
-        r'<link[^>]*rel="canonical"[^>]*href="https://rusvodokanal\.ru[^"]*"[^>]*>',
+        r'<link[^>]*rel="canonical"[^>]*href="https://russvodokanal\.ru[^"]*"[^>]*>',
         f'<link itemprop="url" rel="canonical" href="{city_base_url}{canonical_path}">',
         content
     )
     
     # 2. Open Graph URL
     content = re.sub(
-        r'<meta[^>]*property="og:url"[^>]*content="https://rusvodokanal\.ru[^"]*"[^>]*>',
+        r'<meta[^>]*property="og:url"[^>]*content="https://russvodokanal\.ru[^"]*"[^>]*>',
         f'<meta property="og:url" content="{city_base_url}{canonical_path}">',
         content
     )
     
     # 3. OG Image
     content = re.sub(
-        r'<meta[^>]*property="og:image"[^>]*content="https://rusvodokanal\.ru[^"]*"[^>]*>',
-        f'<meta property="og:image" content="{city_base_url}/img/logo.png">',
+        r'<meta[^>]*property="og:image"[^>]*content="https://russvodokanal\.ru[^"]*"[^>]*>',
+        f'<meta property="og:image" content="{city_base_url}/img/logo.svg">',
         content
     )
     
@@ -300,7 +300,7 @@ def replace_city_data(content, city_code, filename):
     # 11. OG site_name
     content = re.sub(
         r'(<meta[^>]*property="og:site_name"[^>]*content=")[^"]*("[^>]*>)',
-        rf'\g<1>ТехСервис официальная поверка счетчиков воды в {city["name_prepositional"]}\g<2>',
+        rf'\g<1>НПаП официальная поверка счетчиков воды в {city["name_prepositional"]}\g<2>',
         content
     )
     

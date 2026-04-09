@@ -2,10 +2,10 @@ User-agent: *
 Allow: /
 
 # Главное зеркало для Яндекса
-Host: yar.rusvodokanal.ru
+Host: yar.russvodokanal.ru
 
 # Sitemap
-Sitemap: https://yar.rusvodokanal.ru/sitemap.xml
+Sitemap: https://yar.russvodokanal.ru/sitemap.xml
 
 # Запрещённые директории
 Disallow: /cgi-bin/
