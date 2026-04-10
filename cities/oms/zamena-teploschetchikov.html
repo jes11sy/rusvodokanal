@@ -3,7 +3,7 @@
     <head>
     <title>Замена счётчиков тепла в Омске по доступным ценам</title>
     <meta charset="UTF-8">
-        <meta name="yandex-verification" content="6df15c0f1c8542f7" />
+        <meta name="yandex-verification" content="b537593a5f4f9843" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Официальная замена теплосчетчиков в Омске и Саратовской области от компании НПаП. Выезд в день обращения, работа под ключ с гарантией качества.">
     <meta name="keywords" content="замена теплосчетчиков Омск, замена счетчиков тепла Омск, заменить теплосчетчик Омск">
@@ -1526,101 +1526,6 @@
     domain: currentHost
   });
 </script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-   ym(45210303, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-   });
-   
-   
-   let headerPhone = Array.from(document.querySelectorAll('a[href^="tel:"]'))
-   
-    headerPhone.forEach((phone)=>{
-            phone.addEventListener("click",()=>{
-            ym(45210303,'reachGoal','phoneClick')
-        })
-    })
-    
-  document.addEventListener('DOMContentLoaded', function() {
-  const originalFetch = window.fetch;
-  console.log(window.location.host)
-  window.fetch = async function() {
-    const args = arguments;
-    const response = await originalFetch.apply(this, args);
-
-    if (args[0].includes(`https://${window.location.host}/api/lead/setLead/index.php`)) {
-      ym(45210303,'reachGoal','sendForm')
-      if(window.location.host == "gcur.ru"){
-          ym(45210303,'reachGoal','mskotpravitzayavky')
-      }
-      else if (window.location.host == "spb.gcur.ru"){
-          ym(45210303,'reachGoal','spbotpravitzayavky')
-      }
-      else if (window.location.host == "ekb.gcur.ru"){
-          ym(45210303,'reachGoal','ekbotpravitzayavky')
-      }
-      else if (window.location.host == "kazan.gcur.ru"){
-          ym(45210303,'reachGoal','kazanotpravitzayavky')
-      }
-      else if (window.location.host == "chel.gcur.ru"){
-          ym(45210303,'reachGoal','mskotpravitzayavky')
-      }
-    }
-
-    return response;
-  };
-
-  const forms = document.querySelectorAll('form');
-
-  forms.forEach(form => {
-    form.addEventListener('submit', function(event) {
-      const originalAction = form.action;
-      
-      form.action = originalAction;
-
-      form.addEventListener('submit', async function() {
-        await new Promise(resolve => {
-          const interval = setInterval(() => {
-            if (originalAction.includes(`https://${window.location.host}/api/lead/setLead/index.php`)) {
-              clearInterval(interval);
-              ym(45210303,'reachGoal','sendForm')
-              if(window.location.host == "gcur.ru"){
-                  ym(45210303,'reachGoal','mskotpravitzayavky')
-              }
-              else if (window.location.host == "spb.gcur.ru"){
-                  ym(45210303,'reachGoal','spbotpravitzayavky')
-              }
-              else if (window.location.host == "ekb.gcur.ru"){
-                  ym(45210303,'reachGoal','ekbotpravitzayavky')
-              }
-              else if (window.location.host == "kazan.gcur.ru"){
-                  ym(45210303,'reachGoal','kazanotpravitzayavky')
-              }
-              else if (window.location.host == "chel.gcur.ru"){
-                  ym(45210303,'reachGoal','mskotpravitzayavky')
-              }
-              resolve();
-            }
-          }, 1000);
-        });
-      }, { once: true });
-    });
-  });
-});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/45210303" style="position:absolute; left:-9999px;" alt="метрика" /></div></noscript>
-
-<!-- /Yandex.Metrika counter -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLQZNXPSTS"></script>
 <script>
@@ -1678,11 +1583,11 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106554825', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108481053', 'ym');
 
-    ym(106554825, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    ym(108481053, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/106554825" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/108481053" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </body>
 </html>
